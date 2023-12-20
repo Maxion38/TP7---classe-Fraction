@@ -67,5 +67,5 @@ if __name__ == '__main__':
     print("")
 
     print("isAdjacent")
-    print(Fraction(-6, 4).is_adjacent_to(Fraction(2, 4)))
+    print(Fraction(6, 4).is_adjacent_to(Fraction(2, 4)))
     print("")

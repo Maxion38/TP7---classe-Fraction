@@ -173,6 +173,7 @@ class Fraction:
 
         return Fraction(num_result, den_result)
 
+
     def __truediv__(self, other):
         """Overloading of the / operator for fractions
 
@@ -188,8 +189,12 @@ class Fraction:
         num2 = other.get_num
         den2 = other.get_den
 
+
         num_result = num * den2
         den_result = den * num2
+
+        if den_result == 0:
+            raise ZeroDivisionError("Impossible to divide by zero")
 
         return Fraction(num_result, den_result)
 
@@ -295,6 +300,6 @@ class Fraction:
         if not(isinstance(other, Fraction)):
             raise NotFractionInstanceException("The operation must be between two Fraction class instances")
 
-        result_frac = Fraction(abs(self.__num), abs(self.__den)) - Fraction(abs(other.get_num), abs(other.get_den))
-
-        return result_frac.is_unit()
+        result_frac = Fraction(self.__num, self.__den) - Fraction(other.get_num, other.get_den)
+        abs_frac = Fraction(abs(result_frac.__num), abs(result_frac.__den))
+        return abs_frac.is_unit()
