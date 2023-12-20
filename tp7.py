@@ -6,7 +6,7 @@ class NotANumberException(Exception):
 class NotFractionInstanceException(Exception):
     pass
 
-
+# try except
 class Fraction:
     """Class representing a fraction and operations on it
 
@@ -30,9 +30,6 @@ class Fraction:
 
         if den == 0:
             raise ZeroDivisionError("Impossible to divide by zero")
-
-        self.__initial_num = num
-        self.__initial_den = den
 
         pgcd = self.__calc_pgcd()
         if pgcd == "numZero":
@@ -59,7 +56,7 @@ class Fraction:
     def __calc_pgcd(self):
         """Return the pgcd of the Fraction
 
-        PRE : No specific preconditions
+        PRE : self.__den and self.__num are int or float
         POST : Returns the pgcd as a number or if self.__initial_num == 0 returns "numZero"
         """
         if self.__initial_num < self.__initial_den:
@@ -85,7 +82,7 @@ class Fraction:
     def __str__(self):
         """Return a textual representation of the reduced form of the fraction
 
-        PRE : No specific preconditions
+        PRE : self.__den and self.__num are int or float
         POST : Returns a str of the simplified num and den
         """
         return str(self.__num) + "/" + str(self.__den)
@@ -96,7 +93,7 @@ class Fraction:
 
         A mixed number is the sum of an integer and a proper fraction
 
-        PRE : No specific preconditions
+        PRE : self.__den and self.__num are int or float
         POST : Returns a str of the mixed fraction
         """
 
@@ -121,7 +118,7 @@ class Fraction:
     def __add__(self, other):
         """Overloading of the + operator for fractions
 
-        PRE : No specific preconditions
+        PRE : self.__den and self.__num are int or float
         POST : Returns a new Fraction class representing the result of the addition
         RAISE : NotFractionInstanceException if "other" argument is not a Fraction class instance
         """
@@ -139,7 +136,7 @@ class Fraction:
     def __sub__(self, other):
         """Overloading of the - operator for Fractions
 
-        PRE : No specific preconditions
+        PRE : self.__den and self.__num are int or float
         POST : Returns a new Fraction class instance representing the result of the subtraction
         RAISE : NotFractionInstanceException if "other" argument is not a Fraction class instance
         """
@@ -157,7 +154,7 @@ class Fraction:
     def __mul__(self, other):
         """Overloading of the * operator for fractions
 
-        PRE : No specific preconditions
+        PRE : self.__den and self.__num are int or float
         POST : Returns a new Fraction class instance representing the result of the multiplication
         RAISE : NotFractionInstanceException if "other" argument is not a Fraction class instance
         """
@@ -173,11 +170,11 @@ class Fraction:
 
         return Fraction(num_result, den_result)
 
-
+    # gèrer division par zero
     def __truediv__(self, other):
         """Overloading of the / operator for fractions
 
-        PRE : No specific preconditions
+        PRE : self.__den and self.__num are int or float
         POST : Returns a Fraction class instance representing the result of the division
         RAISE : NotFractionInstanceException if "other" argument is not a Fraction class instance
         """
@@ -201,7 +198,7 @@ class Fraction:
     def __pow__(self, other):
         """Overloading of the ** operator for fractions
 
-        PRE : No specific preconditions
+        PRE : self.__den and self.__num are int or float
         POST : Returns a float representing the result of the exponent
         RAISE : NotFractionInstanceException if "other" argument is not a Fraction class instance
         """
@@ -222,7 +219,7 @@ class Fraction:
     def __eq__(self, other):
         """Overloading of the == operator for fractions
 
-        PRE : No specific preconditions
+        PRE : self.__den and self.__num are int or float
         POST : Returns True if the fractions are equals else, return False
         RAISE : NotFractionInstanceException if "other" argument is not a Fraction class instance
         """
@@ -238,7 +235,7 @@ class Fraction:
     def __float__(self):
         """Returns the decimal value of the fraction
 
-        PRE : No specific preconditions
+        PRE : self.__den and self.__num are int or float
         POST : Returns the decimal value of the fraction
         """
 
@@ -253,7 +250,7 @@ class Fraction:
     def is_zero(self):
         """Check if a fraction's value is 0
 
-        PRE : No specific preconditions
+        PRE : self.__num is int or float
         POST : Returns True if num == 0 else returns False
         """
         return self.__num == 0
@@ -272,7 +269,7 @@ class Fraction:
     def is_proper(self):
         """Check if the absolute value of the fraction is < 1
 
-        PRE : No specific preconditions
+        PRE : self.__den and self.__num are int or float
         POST : return True if the absolute value of the fraction is < 1 return False if not
         """
         num = abs(self.__num)
@@ -283,7 +280,7 @@ class Fraction:
     def is_unit(self):
         """Check if a fraction's numerator is 1 in its reduced form
 
-        PRE : No specific preconditions
+        PRE : self.__num is int or float
         POST : return True if the simplified numerator is == 1 if not return False
         """
         return self.__num == 1
@@ -294,6 +291,7 @@ class Fraction:
         Two fractions are adjacent if the absolute value of the difference them is a unit fraction
 
         PRE : one other fraction
+              self.__den and self.__num are int or float
         POST : returns True if the fraction minus the other fraction simplified numerator is == 1 return False if not
         RAISE : NotFractionInstanceException if "other" argument is not a Fraction class instance
         """
